@@ -150,7 +150,7 @@ export default {
       }
     },
     reiniciar() {
-      ;[
+      [
         'pos11',
         'pos12',
         'pos13',
