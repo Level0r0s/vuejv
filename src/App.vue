@@ -28,7 +28,6 @@ export default {
       alguemGanhou: false,
       posicoes: {
         A1: {
-          nome: 'A1',
           exibir: null,
           ganhou: false,
           verificar: ['linha1', 'coluna1', 'vertical1']
