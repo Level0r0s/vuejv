@@ -9,9 +9,11 @@
 <script>
 export default {
   name: 'jvCell',
-  props: [ 'value' ],
+  props: ['value'],
   methods: {
-    jogar () { this.$emit('jogar') }
+    jogar() {
+      this.$emit('jogar')
+    }
   }
 }
 </script>
@@ -25,7 +27,7 @@ export default {
   height: 100px;
   text-align: center;
   line-height: 100px;
-  font-size: 60px
+  font-size: 60px;
 }
 .cell:hover {
   background-color: #fee;

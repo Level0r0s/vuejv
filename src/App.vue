@@ -25,145 +25,135 @@ export default {
   data() {
     return {
       vezDe: 'X',
+      alguemGanhou: false,
       posicoes: {
-        pos11: {
+        A1: {
+          nome: 'A1',
           exibir: null,
-          ganhou: false
+          ganhou: false,
+          verificar: ['linha1', 'coluna1', 'vertical1'],
+          edge: ['B1', 'C1', 'A2', 'A3']
         },
-        pos12: {
+        B1: {
           exibir: null,
-          ganhou: false
+          ganhou: false,
+          verificar: ['linha1', 'coluna2'],
+          edge: ['A1', 'C1', 'B2', 'B3']
         },
-        pos13: {
+        C1: {
           exibir: null,
-          ganhou: false
+          ganhou: false,
+          verificar: ['linha1', 'coluna3', 'vertical2'],
+          edge: ['A1', 'B1', 'C2', 'C3']
         },
-        pos21: {
+        A2: {
           exibir: null,
-          ganhou: false
+          ganhou: false,
+          verificar: ['linha2', 'coluna1'],
+          edge: ['B2', 'C2', 'A1', 'A3']
         },
-        pos22: {
+        B2: {
           exibir: null,
-          ganhou: false
+          ganhou: false,
+          verificar: ['linha2', 'coluna2', 'vertical1', 'vertical2'],
+          edge: ['A2', 'C2', 'B1', 'B3']
         },
-        pos23: {
+        C2: {
           exibir: null,
-          ganhou: false
+          ganhou: false,
+          verificar: ['linha2', 'coluna3'],
+          edge: ['A1', 'B2', 'C1', 'C3']
         },
-        pos31: {
+        A3: {
           exibir: null,
-          ganhou: false
+          ganhou: false,
+          verificar: ['linha3', 'coluna1', 'vertical2'],
+          edge: ['B3', 'C3', 'A1', 'A2']
         },
-        pos32: {
+        B3: {
           exibir: null,
-          ganhou: false
+          ganhou: false,
+          verificar: ['linha3', 'coluna2'],
+          edge: ['A3', 'C3', 'B1', 'B2']
         },
-        pos33: {
+        C3: {
           exibir: null,
-          ganhou: false
+          ganhou: false,
+          verificar: ['linha3', 'coluna3', 'vertical1'],
+          edge: ['A3', 'B3', 'C1', 'C2']
         }
       }
     }
   },
   computed: {
-    // gostaria que nao existisse esse mapeamento
     linha1() {
-      return [this.posicoes.pos11, this.posicoes.pos12, this.posicoes.pos13]
+      return [this.posicoes.A1, this.posicoes.B1, this.posicoes.C1]
     },
     linha2() {
-      return [this.posicoes.pos21, this.posicoes.pos22, this.posicoes.pos23]
+      return [this.posicoes.A2, this.posicoes.B2, this.posicoes.C2]
     },
     linha3() {
-      return [this.posicoes.pos31, this.posicoes.pos32, this.posicoes.pos33]
+      return [this.posicoes.A3, this.posicoes.B3, this.posicoes.C3]
     },
     coluna1() {
-      return [this.posicoes.pos11, this.posicoes.pos21, this.posicoes.pos31]
+      return [this.posicoes.A1, this.posicoes.A2, this.posicoes.A3]
     },
     coluna2() {
-      return [this.posicoes.pos12, this.posicoes.pos22, this.posicoes.pos32]
+      return [this.posicoes.B1, this.posicoes.B2, this.posicoes.B3]
     },
     coluna3() {
-      return [this.posicoes.pos13, this.posicoes.pos23, this.posicoes.pos33]
+      return [this.posicoes.C1, this.posicoes.C2, this.posicoes.C3]
     },
     vertical1() {
-      return [this.posicoes.pos11, this.posicoes.pos22, this.posicoes.pos33]
+      return [this.posicoes.A1, this.posicoes.B2, this.posicoes.C3]
     },
     vertical2() {
-      return [this.posicoes.pos13, this.posicoes.pos22, this.posicoes.pos31]
-    },
-    ganhouLinha1() {
-      return this.ganhou(this.linha1)
-    },
-    ganhouLinha2() {
-      return this.ganhou(this.linha2)
-    },
-    ganhouLinha3() {
-      return this.ganhou(this.linha3)
-    },
-    ganhouColuna1() {
-      return this.ganhou(this.coluna1)
-    },
-    ganhouColuna2() {
-      return this.ganhou(this.coluna2)
-    },
-    ganhouColuna3() {
-      return this.ganhou(this.coluna3)
-    },
-    ganhouVertical1() {
-      return this.ganhou(this.vertical1)
-    },
-    ganhouVertical2() {
-      return this.ganhou(this.vertical2)
-    },
-    alguemGanhou() {
-      let haGanhadores =
-        [
-          this.ganhouLinha1,
-          this.ganhouLinha2,
-          this.ganhouLinha3,
-          this.ganhouColuna1,
-          this.ganhouColuna2,
-          this.ganhouColuna3,
-          this.ganhouVertical1,
-          this.ganhouVertical2
-        ].reduce((p, seGanhou) => p + (seGanhou ? 1 : 0), 0) >= 1
-      return haGanhadores
+      return [this.posicoes.A3, this.posicoes.B2, this.posicoes.C1]
     }
   },
   methods: {
-    ganhou(posicoes) {
-      const marcados = posicoes.map(i => i.exibir)
-      let haUmganhador = marcados[0] && allEqual(marcados)
-      posicoes.forEach(i => {
-        i.ganhou = i.ganhou || haUmganhador
-      })
-      return haUmganhador
+    verificarSeGanhou(posicoes) {
+      if (!this.alguemGanhou) {
+        console.log('verifica se ganhou')
+        let haUmganhador = false
+        let self = this
+        let idx = 0
+        posicoes.forEach(function(_pos) {
+          idx++
+          console.log(`#${idx}`, _pos)
+          let posicoesVerificar = self[_pos]
+          const marcados = posicoesVerificar.map(i => i.exibir)
+          console.log(`#${idx}`, marcados)
+          let haUmganhador = allEqual(marcados)
+          self.alguemGanhou = self.alguemGanhou || haUmganhador
+          posicoesVerificar.forEach(i => (i.ganhou = i.ganhou || haUmganhador))
+          console.log(`#${idx}`, haUmganhador ? 'GANHOU' : 'nao ganhou')
+        })
+      }
     },
     jogarPartida(pos) {
+      console.log('jogar partida')
       let vezDeJogar = this.vezDe
       let ninguemGanhou = !this.alguemGanhou
+      let self = this
       if (ninguemGanhou) {
         pos.exibir = vezDeJogar
-        if (!this.alguemGanhou) {
-          this.vezDe = vezDeJogar === 'X' ? 'O' : 'X' /// ajuste
+        self.verificarSeGanhou(pos.verificar)
+        if (!self.alguemGanhou) {
+          self.vezDe = vezDeJogar === 'X' ? 'O' : 'X'
         }
       }
     },
     reiniciar() {
-      [
-        'pos11',
-        'pos12',
-        'pos13',
-        'pos21',
-        'pos22',
-        'pos23',
-        'pos31',
-        'pos32',
-        'pos33'
-      ].forEach(pos => {
-        this.posicoes[pos].exibir = null
-        this.posicoes[pos].ganhou = false
-      })
+      console.clear()
+      console.log('reiniciar')
+      let self = this
+      for (let item in self.posicoes) {
+        let posicao = self.posicoes[item]
+        posicao.exibir = null
+        posicao.ganhou = false
+      }
+      self.alguemGanhou = false
     }
   }
 }

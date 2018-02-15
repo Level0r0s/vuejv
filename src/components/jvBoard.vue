@@ -1,19 +1,19 @@
 <template>
   <div class="board">
     <div class="row">
-      <jv-cell v-model="value.pos11" @jogar="jogar(value.pos11)" ></jv-cell>
-      <jv-cell v-model="value.pos12" @jogar="jogar(value.pos12)" ></jv-cell>
-      <jv-cell v-model="value.pos13" @jogar="jogar(value.pos13)" ></jv-cell>
+      <jv-cell v-model="value.A1" @jogar="jogar(value.A1)" ></jv-cell>
+      <jv-cell v-model="value.B1" @jogar="jogar(value.B1)" ></jv-cell>
+      <jv-cell v-model="value.C1" @jogar="jogar(value.C1)" ></jv-cell>
     </div>
     <div class="row">
-      <jv-cell v-model="value.pos21" @jogar="jogar(value.pos21)" ></jv-cell>
-      <jv-cell v-model="value.pos22" @jogar="jogar(value.pos22)" ></jv-cell>
-      <jv-cell v-model="value.pos23" @jogar="jogar(value.pos23)" ></jv-cell>
+      <jv-cell v-model="value.A2" @jogar="jogar(value.A2)" ></jv-cell>
+      <jv-cell v-model="value.B2" @jogar="jogar(value.B2)" ></jv-cell>
+      <jv-cell v-model="value.C2" @jogar="jogar(value.C2)" ></jv-cell>
     </div>
     <div class="row">
-      <jv-cell v-model="value.pos31" @jogar="jogar(value.pos31)" ></jv-cell>
-      <jv-cell v-model="value.pos32" @jogar="jogar(value.pos32)" ></jv-cell>
-      <jv-cell v-model="value.pos33" @jogar="jogar(value.pos33)" ></jv-cell>
+      <jv-cell v-model="value.A3" @jogar="jogar(value.A3)" ></jv-cell>
+      <jv-cell v-model="value.B3" @jogar="jogar(value.B3)" ></jv-cell>
+      <jv-cell v-model="value.C3" @jogar="jogar(value.C3)" ></jv-cell>
     </div>
   </div>
 </template>
@@ -24,9 +24,9 @@ import jvCell from './jvCell'
 export default {
   name: 'jvBoard',
   components: { jvCell },
-  props: [ 'value' ],
+  props: ['value'],
   methods: {
-    jogar (pos) {
+    jogar(pos) {
       this.$emit('jogar', pos)
     }
   }
