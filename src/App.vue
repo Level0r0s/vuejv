@@ -31,56 +31,47 @@ export default {
           nome: 'A1',
           exibir: null,
           ganhou: false,
-          verificar: ['linha1', 'coluna1', 'vertical1'],
-          edge: ['B1', 'C1', 'A2', 'A3']
+          verificar: ['linha1', 'coluna1', 'vertical1']
         },
         B1: {
           exibir: null,
           ganhou: false,
-          verificar: ['linha1', 'coluna2'],
-          edge: ['A1', 'C1', 'B2', 'B3']
+          verificar: ['linha1', 'coluna2']
         },
         C1: {
           exibir: null,
           ganhou: false,
-          verificar: ['linha1', 'coluna3', 'vertical2'],
-          edge: ['A1', 'B1', 'C2', 'C3']
+          verificar: ['linha1', 'coluna3', 'vertical2']
         },
         A2: {
           exibir: null,
           ganhou: false,
-          verificar: ['linha2', 'coluna1'],
-          edge: ['B2', 'C2', 'A1', 'A3']
+          verificar: ['linha2', 'coluna1']
         },
         B2: {
           exibir: null,
           ganhou: false,
-          verificar: ['linha2', 'coluna2', 'vertical1', 'vertical2'],
-          edge: ['A2', 'C2', 'B1', 'B3']
+          verificar: ['linha2', 'coluna2', 'vertical1', 'vertical2']
         },
         C2: {
           exibir: null,
           ganhou: false,
-          verificar: ['linha2', 'coluna3'],
-          edge: ['A1', 'B2', 'C1', 'C3']
+          verificar: ['linha2', 'coluna3']
         },
         A3: {
           exibir: null,
           ganhou: false,
-          verificar: ['linha3', 'coluna1', 'vertical2'],
-          edge: ['B3', 'C3', 'A1', 'A2']
+          verificar: ['linha3', 'coluna1', 'vertical2']
         },
         B3: {
           exibir: null,
           ganhou: false,
-          verificar: ['linha3', 'coluna2'],
-          edge: ['A3', 'C3', 'B1', 'B2']
+          verificar: ['linha3', 'coluna2']
         },
         C3: {
           exibir: null,
           ganhou: false,
-          verificar: ['linha3', 'coluna3', 'vertical1'],
-          edge: ['A3', 'B3', 'C1', 'C2']
+          verificar: ['linha3', 'coluna3', 'vertical1']
         }
       }
     }

@@ -2,7 +2,7 @@
   <button class="cell"
     :class="{ganhou:value.ganhou}"
     :disabled="this.value.exibir != null? 'disabled' :null"
-    @click="jogar"> {{ value.exibir }}
+    @click="jogar" > {{ value.exibir }}
   </button>
 </template>
 
